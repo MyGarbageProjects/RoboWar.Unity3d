@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RaycastShoot.cs">
+    <Files>
+      <File FileName="Assets\Enemy\testEnemy.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\AIhealth.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\RaycastShoot.cs" Line="111" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

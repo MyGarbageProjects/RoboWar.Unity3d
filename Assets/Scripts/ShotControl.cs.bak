@@ -1,0 +1,94 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class ShotControl : MonoBehaviour {
+
+	enum Ceasefire {
+		SingleFire,
+		MultiFire
+	}
+
+
+	//Касательно внешнего вида
+	[SerializeField] private Transform _dulo;
+	[SerializeField] private Animator _animator;
+	[SerializeField] private ParticleSystem _PS;
+	[SerializeField] private AudioSource _AS;
+	[SerializeField] private Light _flash;
+	//Касательно внутренних характиристик
+	[SerializeField] private Ceasefire _ceasefire = Ceasefire.SingleFire;
+	[Range (0.05f, 1)]
+	[SerializeField] private float _delayShot = 0.09f;
+	[SerializeField] private int _totalAmmo = 120;
+	[SerializeField] private int _magazineCapacity = 30;
+	[SerializeField] private float _duration = 100.0f;
+	//Триггеры
+	private bool _fire;
+	private bool _pause = false;
+
+	void Start() {
+		//Cursor.lockState = CursorLockMode.Locked;
+		//if(_Hand!= null)
+			//transform.SetParent(_Hand,true);
+	}
+	Ray _Aimray;
+	void Update () {
+		
+		_fire = _ceasefire == Ceasefire.SingleFire? Input.GetButtonDown("Fire") : Input.GetButton("Fire");
+//----------------ДЕБАГ---------------------------------------
+		Vector3 point = new Vector3 (Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2,0);
+		_Aimray = Camera.main.ScreenPointToRay (point);
+		Debug.DrawRay (_Aimray.origin,_Aimray.direction*_duration*2, Color.green);
+//----------------ДЕБАГ---------------------------------------
+		//Debug.Log(_fire);
+	}
+
+
+
+
+
+	void FixedUpdate() {
+		if(_fire & !_pause) {
+			StartCoroutine(Shot());
+		}
+	}
+
+
+
+	private IEnumerator Shot() {
+		//Анимация выстрела
+		Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
+
+		_pause = true;
+		//-------------------------------------------------
+		RaycastHit hit;
+		Ray ray = new Ray(_dulo.transform.position,_dulo.transform.forward);
+
+		if (Physics.Raycast (ray, out hit,100.0f)){
+			Debug.DrawRay (_dulo.transform.position, _Aimray.origin +( Camera.main.transform.forward* _duration), Color.red);
+			GameObject hitObject = hit.transform.gameObject;
+			StartCoroutine (BulletIndicator (hit.point));
+		}
+		//-------------------------------------------------
+		_flash.enabled = true;
+		_PS.Play ();
+		_AS.Play ();
+		yield return new WaitForSeconds (_delayShot);
+		_flash.enabled = false;
+		_pause = false;
+	}
+
+
+
+
+	private IEnumerator BulletIndicator(Vector3 pos)
+	{
+		GameObject bullet = GameObject.CreatePrimitive (PrimitiveType.Sphere);
+		bullet.transform.localScale = new Vector3 (0.05f,0.05f,0.05f);
+		bullet.transform.position = pos;
+		yield return new WaitForSeconds (5.0f);
+
+		Destroy (bullet);
+	}
+
+}
