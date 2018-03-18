@@ -17,7 +17,7 @@ public class AIhealth : MonoBehaviour {
 			_health -=damage;
 		else
 			StartCoroutine(Die());
-		Debug.Log(_health);
+		//Debug.Log(_health);
 	}
 
 	public float Health
@@ -37,11 +37,14 @@ public class AIhealth : MonoBehaviour {
 		AIEnemy ai = GetComponent<AIEnemy> ();
 		if (ai != null)
 			ai.enabled = false;
+		Animator anim = GetComponent<Animator> ();
+		if (anim != null)
+			anim.enabled = false;
 		
 		//rb.isKinematic = true;
 
 		yield return new WaitForSeconds(5.5f);
 		Destroy(this.gameObject);
-
+		WorldControl.countEnemyNow--;
 	}
 }

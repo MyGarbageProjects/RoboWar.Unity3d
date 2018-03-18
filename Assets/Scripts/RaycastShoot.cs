@@ -122,7 +122,9 @@ public class RaycastShoot : MonoBehaviour {
 			_totalAmmo = _temp>=0? _temp : 0;
 		}
 		_wordlControl.PAUSE = false;
-		_magazine_empty = false;}
+		_magazine_empty = false;
+	}
+
 	private IEnumerator Shot(){
 		AmmoControl();
 		_gunAudio[1].Play();

@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WorldControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RaycastShoot.cs">
     <Files>
-      <File FileName="Assets\Scripts\AIhealth.cs" Line="35" Column="3" />
-      <File FileName="Assets\Scripts\RaycastShoot.cs" Line="111" Column="3" />
-      <File FileName="Assets\Scripts\WorldControl.cs" Line="21" Column="75" />
-      <File FileName="Assets\Scripts\AIEnemy.cs" Line="29" Column="37" />
-      <File FileName="Assets\Enemy\testEnemy.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\AIhealth.cs" Line="20" Column="5" />
+      <File FileName="Assets\Scripts\WorldControl.cs" Line="46" Column="20" />
+      <File FileName="Assets\Scripts\RaycastShoot.cs" Line="8" Column="13" />
+      <File FileName="Assets\Scripts\AIEnemy.cs" Line="41" Column="7" />
+      <File FileName="Assets\Enemy\testEnemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FPSControl.cs" Line="122" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
